@@ -11,9 +11,6 @@ How to Run:
 Note: Please copy the dependency libraries to the lib directory<br>
 See lib/lib-list.txt for details
 
-## 最新リリース 
-[最新リリース](https://github.com/Divings/java-household-account-book/releases/latest)
-
 Features:
 
 1. **Add Transaction:** Enter the transaction details, including amount, description, and date, and click the "Add Transaction" button to add it to the database.
