@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.sql.*;
 
 public class ExpenseTracker extends JFrame {
+
     private static final String FONTS="UTF-8";
     private static final String DATABASE_URL = "jdbc:sqlite:expense_tracker.db";
     private static final String CREATE_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS transactions (id INTEGER PRIMARY KEY AUTOINCREMENT, amount REAL, description TEXT, date TEXT)";
@@ -23,7 +24,7 @@ public class ExpenseTracker extends JFrame {
         setupDatabase();
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400, 300);
+        setSize(450, 350);
         setResizable(true); // サイズ変更禁止
         setLocationRelativeTo(null);
         setVisible(true);
@@ -61,9 +62,18 @@ public class ExpenseTracker extends JFrame {
             }
         });
 
+        JButton exportButton = new JButton("Export Data");
+        exportButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ExportData.ExportData();
+            }
+        });
+
         Font buttonFont = new Font(FONTS, Font.PLAIN, 16); // ボタンのフォント
         addButton.setFont(buttonFont);
         displayButton.setFont(buttonFont);
+        exportButton.setFont(buttonFont);
 
         transactionsArea = new JTextArea();
         transactionsArea.setEditable(false);
@@ -78,13 +88,14 @@ public class ExpenseTracker extends JFrame {
         panel.add(dateField);
         panel.add(addButton);
         panel.add(displayButton);
-
+        panel.add(exportButton);// エクスポートボタンを配置
         add(panel, BorderLayout.NORTH); // パネルを上部に配置
 
         // transactionsArea をスクロール可能にし、横幅をウィンドウいっぱいに拡張
         int rows = 5;
         int rowHeight = transactionsArea.getFontMetrics(transactionsArea.getFont()).getHeight();
         JScrollPane scrollPane = new JScrollPane(transactionsArea);
+        scrollPane.setBorder(BorderFactory.createLineBorder(Color.BLACK));// 枠線を追加
         scrollPane.setPreferredSize(new Dimension(getWidth(), rows * rowHeight - 3 * transactionsArea.getFontMetrics(transactionsArea.getFont()).getHeight()));
         add(scrollPane, BorderLayout.CENTER); // スクロールペインを中央に配置
     }
