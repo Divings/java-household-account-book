@@ -7,8 +7,8 @@ How to Run:
 1. Ensure you have Java installed on your system.
 2. Download the "ExpenseTracker.jar" file from the repository.
 3. Open a terminal or command prompt and navigate to the directory containing the JAR file.
-4. Run the following command: java -jar ExpenseTracker.jar
-Note: Please copy the dependency libraries to the lib directory
+4. Run the following command: java -jar ExpenseTracker.jar<br>
+Note: Please copy the dependency libraries to the lib directory<br>
 See lib/lib-list.txt for details
 
 Features:
