@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.sql.*;
 
 public class ExpenseTracker extends JFrame {
-
+    private static final String FONTS="UTF-8";
     private static final String DATABASE_URL = "jdbc:sqlite:expense_tracker.db";
     private static final String CREATE_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS transactions (id INTEGER PRIMARY KEY AUTOINCREMENT, amount REAL, description TEXT, date TEXT)";
     private static final String INSERT_TRANSACTION_QUERY = "INSERT INTO transactions (amount, description, date) VALUES (?, ?, ?)";
@@ -34,7 +34,7 @@ public class ExpenseTracker extends JFrame {
         panel.setLayout(new GridLayout(6, 2));
 
         // フォントサイズの設定
-        Font inputFont = new Font("UTF-8", Font.PLAIN, 14);
+        Font inputFont = new Font(FONTS, Font.PLAIN, 14);
         
         amountField = new JTextField();
         amountField.setFont(inputFont);
@@ -61,15 +61,15 @@ public class ExpenseTracker extends JFrame {
             }
         });
 
-        Font buttonFont = new Font("UTF-8", Font.PLAIN, 16); // ボタンのフォント
+        Font buttonFont = new Font(FONTS, Font.PLAIN, 16); // ボタンのフォント
         addButton.setFont(buttonFont);
         displayButton.setFont(buttonFont);
 
         transactionsArea = new JTextArea();
         transactionsArea.setEditable(false);
-        transactionsArea.setFont(new Font("UTF-8", Font.PLAIN, 14)); // テキストエリアのフォント
+        transactionsArea.setFont(new Font(FONTS, Font.PLAIN, 14)); // テキストエリアのフォント
 
-        Font labelFont = new Font("Arial", Font.BOLD, 14); // ラベルのフォント
+        Font labelFont = new Font(FONTS, Font.BOLD, 14); // ラベルのフォント
         panel.add(new JLabel("Amount:")).setFont(labelFont);
         panel.add(amountField);
         panel.add(new JLabel("Description:")).setFont(labelFont);
@@ -147,7 +147,6 @@ private void displayTransactions() {
         e.printStackTrace();
     }
 }
-
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
